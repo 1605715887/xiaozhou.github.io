@@ -1,0 +1,23 @@
+#include <stdio.h>
+int main()
+ {
+int a[5] {1,5,8,14,46};
+int b,i;
+scanf("%d",&b);
+for(i=4;i>=0;i--)
+{
+ if(a[i]>b)
+{
+ a[i+1]=a[i];
+ a[i]=b;
+}
+else
+{
+a[i+1]=b;
+break;
+}
+}
+for(i=0;i<=5;i++)
+printf("%d ",a[i]) ;
+	return 0;
+}
