@@ -1,0 +1,30 @@
+#include <stdio.h>
+int main()
+{	
+    int n,m,T,t,i;
+    scanf("%d",&T);
+    for(t=0;t<T;t++)
+     {
+    	int min(int x,int y);
+    	scanf("%d %d",&n,&m);
+    	if (n==0&&m!=0)
+          printf("%d\n",n);
+     if(m!=0&&n!=0)
+      {
+    for(i=min(n,m);i>=1;i--)
+    if(n%i==0&&m%i==0)
+    {n/=i;
+	 m/=i;
+	}
+	 if(m==1)
+    	printf("%d\n",n);
+	else if(m!=1&&m!=0) printf("%d/%d\n",n,m);
+	  }
+	else if(m==0)
+    	printf("Error!\n");
+}
+   return 0;	
+}
+int min(int x,int y)
+    {return(x>=y?y:x);
+}
