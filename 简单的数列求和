@@ -1,0 +1,16 @@
+#include<stdio.h>
+
+int main()
+{
+ float a=2,b=1,s=0,c;
+ int i;
+ for(i=1;i<=20;i++)
+ {
+ s=s+a/b;
+ c=a;
+ a=a+b;
+ b=c;
+}
+printf("前20项和为%f",s); 
+ 	return 0;
+}
