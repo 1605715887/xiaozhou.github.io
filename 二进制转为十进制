@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+int main( )
+{
+int T,len,c, sum,h;
+scanf( "%d",&T) ;
+for(int i=1; i<=T; i++ )
+{
+char a[31]= {'\0'};
+scanf( "%s",a) ;
+len=strlen(a) ;
+c=1 ;
+sum=0 ;
+for(int j=len-1; j>=0; j--) 
+{
+h=a[j]-'0';
+sum=sum+h*c ;
+c=C*2 ;
+}
+printf( "%d\n"，sum) ;
+}
+return 0;
+}
