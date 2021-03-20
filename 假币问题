@@ -1,0 +1,48 @@
+#include<iostream>
+using namespace std;
+// 0：真币 ， 1：假的重币 ， -1：假的轻币
+char lefts[3][7],rights[3][7],result[3][7];
+int res[12]={0}; // 12枚硬币假设都为真
+bool fun(){
+	for(int i=0;i<3;i++){
+		int l_sum=0 , r_sum=0;//左右两边重量
+		for(int j=0;j<6 && lefts[i][j] != NULL;j++){
+			l_sum += res[lefts[i][j] - 'A'];
+			r_sum += res[rights[i][j] - 'A'];
+		}
+		if(l_sum > r_sum && result[i][0] != 'u')//假设左边重于右边且右边不是“up”
+			return false;                       // 那么假设不成立，返回false
+		if(l_sum == r_sum && result[i][0] != 'e')//同上
+			return false;
+		if(l_sum < r_sum && result[i][0] != 'd')//同上
+			return false;
+	}
+	return true;
+
+}
+
+int main()
+{	
+	int n;
+	cin>>n;
+	while(n--){
+		for(int i=0;i<3;i++)
+			cin>>lefts[i]>>rights[i]>>result[i];
+		int j;
+		for(j=0;j<12;j++){
+			res[j]=1; //假设为重
+			if(fun())
+				break;
+			res[j]=-1; //假设为轻
+			if(fun())
+				break;
+			res[j]=0; //为真币
+			
+		}
+		if(res[j]>0)
+			cout<<char(j+'A')<<" is the counterfeit coin and it is heavy."<<endl;
+		else
+			cout<<char(j+'A')<<" is the counterfeit coin and it is light."<<endl;
+	}
+	return 0;
+}
