@@ -1,0 +1,40 @@
+#include<iostream>
+#include<cstring>
+using namespace std;
+int res[92][8];
+int path[8];
+int cnt = 0;
+void dfs(int n) {
+	if (n > 7) {
+		for (int k = 0; k < 8; k++)
+			res[cnt][k] = path[k];
+		cnt++; 
+		return;
+	}
+	for (int i = 1; i <= 8; i++)
+	{
+		int k;
+		for (k = 0; k < n; k++)
+			if ((path[k] == i)||abs(path[k] - i) == abs(n - k))
+				break;
+				if (k == n) {
+					path[n]=i;
+					dfs(n+1);
+				}
+	}
+}
+int main()
+{
+	int T, n;
+	memset(path, 0, sizeof(path));
+	cnt = 0;
+	dfs(0);
+		cin >> T;
+	while (T--) {
+		cin >> n;
+		for (int i = 0; i < 8; i++)
+			cout << res[n - 1][i];
+		cout << endl;
+	}
+	return 0;
+}
