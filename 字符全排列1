@@ -1,0 +1,36 @@
+#include<iostream>
+#include<algorithm>
+#include<cstring>
+#include<vector>
+using namespace std;
+vector<string> ans;
+string path;
+vector<bool> used;
+void dfs(string s, int u)
+{
+	if (u == s.size())
+	{
+		ans.push_back(path);
+		return;
+	}
+	for (int i = 0; i < s.size(); i++)
+		if (used[i] == false)
+		{
+			path[u] = s[i];
+			used[i] = true;
+			dfs(s, u + 1);
+			used[i] = false;
+		}
+}
+int main()
+{
+	string line;
+	cin >> line;
+	sort(line.begin(), line.end());
+	path = line;
+	used = vector<bool>(line.size());
+	dfs(line, 0);
+	for (auto l : ans)
+		cout << l << endl;
+	return 0;
+}
